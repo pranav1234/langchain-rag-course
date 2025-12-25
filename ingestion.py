@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
-from langchain_openai import OpenAIEmbeddings
+from langchain_cohere import CohereEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import CharacterTextSplitter
 
@@ -10,7 +10,7 @@ load_dotenv()
 
 if __name__ == "__main__":
     print("Ingesting...")
-    loader = TextLoader("/Users/edenmarco/Desktop/langchain-course/mediumblog1.txt")
+    loader = TextLoader("/Users/pranavnew/Documents/project/langchain/langchain-course/mediumblog1.txt")
     document = loader.load()
 
     print("splitting...")
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     texts = text_splitter.split_documents(document)
     print(f"created {len(texts)} chunks")
 
-    embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
+    embeddings = CohereEmbeddings(model="embed-english-v3.0")
 
     print("ingesting...")
     PineconeVectorStore.from_documents(
