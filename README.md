@@ -1,31 +1,71 @@
-# LangChain RAG Course
+# LangChain Learning Journey
 
-A complete implementation of RAG (Retrieval-Augmented Generation) and AI agents using LangChain, Gemini, Cohere, and Pinecone.
+A structured collection of LangChain implementations and learnings, organized by topic.
 
-## 🎯 What's Inside
+## 📁 Project Structure
 
-### 1. **Agent with Tools** (`main.py` - original)
-- Manual ReAct loop implementation
-- Custom tool: `get_text_length`
-- Gemini LLM with function calling
-- Educational comments explaining each step
+```
+langchain-course/
+├── 01-rag-basics/              # RAG implementation
+│   ├── main.py                 # Query system
+│   ├── ingestion.py            # Document processing
+│   ├── mediumblog1.txt         # Sample document
+│   └── README.md
+│
+├── 02-agents-and-tools/        # AI agents with ReAct
+│   ├── callbacks.py            # Debug handlers
+│   ├── main_with_agent_executor.py
+│   ├── demo_tool_description.py
+│   └── README.md
+│
+├── docs/                       # Comprehensive documentation
+│   ├── RAG_IMPLEMENTATION_EXPLAINED.md
+│   ├── FUNCTION_CALLING_EXPLAINED.md
+│   ├── FUNCTION_CALLING_VS_REACT.md
+│   ├── CREATE_TOOL_CALLING_AGENT_EXPLAINED.md
+│   ├── AGENT_EXECUTOR_EXPLAINED.md
+│   ├── COMPARISON.md
+│   ├── COHERE_SETUP.md
+│   └── GITHUB_UPLOAD_GUIDE.md
+│
+├── .env                        # API keys (not committed)
+├── .gitignore                  # Git ignore rules
+├── pyproject.toml              # Dependencies (uv)
+├── uv.lock                     # Lock file
+└── README.md                   # This file
+```
 
-### 2. **RAG System** 
-- **`ingestion.py`**: Document processing pipeline
-- **`main.py`**: Query system with retrieval
-- Semantic search using Cohere embeddings
-- Pinecone vector database
-- Gemini for answer generation
+## 🎯 Learning Modules
 
-## 🚀 Features
+### [01 - RAG Basics](./01-rag-basics/)
+Learn Retrieval-Augmented Generation from scratch:
+- ✅ Document loading and chunking
+- ✅ Vector embeddings with Cohere
+- ✅ Pinecone vector database
+- ✅ Semantic search
+- ✅ Answer generation with Gemini
 
-- ✅ Manual agent loop (ReAct pattern)
-- ✅ RAG implementation from scratch
-- ✅ Free-tier compatible (Cohere + Gemini)
-- ✅ Production-ready architecture
-- ✅ Comprehensive documentation
+**Time**: ~1-2 hours  
+**Difficulty**: Beginner
 
-## 📦 Setup
+### [02 - Agents and Tools](./02-agents-and-tools/)
+Build AI agents using the ReAct pattern:
+- ✅ Manual agent loops
+- ✅ Function calling
+- ✅ Tool descriptions
+- ✅ AgentExecutor
+- ✅ Debugging with callbacks
+
+**Time**: ~1-2 hours  
+**Difficulty**: Intermediate
+
+### Coming Soon...
+- 03 - Conversation Memory
+- 04 - Advanced RAG (Re-ranking, Hybrid Search)
+- 05 - LangGraph Workflows
+- 06 - Production Deployment
+
+## � Quick Start
 
 ### 1. Install Dependencies
 ```bash
@@ -36,164 +76,153 @@ uv sync
 pip install -r requirements.txt
 ```
 
-### 2. Set Environment Variables
+### 2. Set Up API Keys
 Create a `.env` file:
 ```bash
-GOOGLE_API_KEY=your_gemini_api_key
-COHERE_API_KEY=your_cohere_api_key
-PINECONE_API_KEY=your_pinecone_api_key
-INDEX_NAME=your_pinecone_index_name
+GOOGLE_API_KEY=your_gemini_key
+COHERE_API_KEY=your_cohere_key
+PINECONE_API_KEY=your_pinecone_key
+INDEX_NAME=your_index_name
 ```
 
-### 3. Get API Keys (All Free!)
+### 3. Get Free API Keys
+- **Gemini**: https://makersuite.google.com/app/apikey
+- **Cohere**: https://dashboard.cohere.com/
+- **Pinecone**: https://www.pinecone.io/
 
-**Gemini**: https://makersuite.google.com/app/apikey  
-**Cohere**: https://dashboard.cohere.com/  
-**Pinecone**: https://www.pinecone.io/
-
-## 🏃 Usage
-
-### RAG System
-
-#### Step 1: Ingest Documents (One-time)
+### 4. Start Learning!
 ```bash
-python ingestion.py
-```
-This will:
-- Load `mediumblog1.txt`
-- Split into 20 chunks
-- Create embeddings with Cohere
-- Store in Pinecone
+# Module 1: RAG
+cd 01-rag-basics
+python ingestion.py  # One-time setup
+python main.py       # Query the system
 
-#### Step 2: Query the System
-```bash
-python main.py
-```
-Ask questions about your documents!
-
-### Agent with Tools
-```bash
-python main.py  # (the original agent implementation)
+# Module 2: Agents
+cd ../02-agents-and-tools
+python demo_tool_description.py
 ```
 
-## 🏗️ Architecture
+## 🏗️ Tech Stack
 
-### RAG Pipeline
-```
-Document → Split → Embed (Cohere) → Store (Pinecone)
-                                          ↓
-Query → Embed → Search → Retrieve → Generate (Gemini)
-```
-
-### Components
-- **Embeddings**: Cohere `embed-english-v3.0` (1024 dimensions)
-- **Vector DB**: Pinecone (cloud-hosted)
-- **LLM**: Gemini `gemini-2.5-flash-lite`
-- **Framework**: LangChain
+| Component | Technology | Why? |
+|-----------|-----------|------|
+| **Framework** | LangChain | Industry standard for LLM apps |
+| **LLM** | Gemini 2.5 Flash Lite | Free tier, fast, capable |
+| **Embeddings** | Cohere v3.0 | Free tier, 1024-d vectors |
+| **Vector DB** | Pinecone | Managed, scalable, easy |
+| **Package Manager** | uv | 10-100x faster than pip |
 
 ## 📚 Documentation
 
-- **`RAG_IMPLEMENTATION_EXPLAINED.md`**: Deep dive into RAG system
-- **`FUNCTION_CALLING_EXPLAINED.md`**: What is function calling?
-- **`FUNCTION_CALLING_VS_REACT.md`**: Function calling vs ReAct pattern
-- **`CREATE_TOOL_CALLING_AGENT_EXPLAINED.md`**: AgentExecutor explained
-- **`AGENT_EXECUTOR_EXPLAINED.md`**: What makes AgentExecutor special?
-- **`COMPARISON.md`**: Manual loop vs AgentExecutor
+All detailed explanations are in the `/docs` folder:
 
-## 📁 Project Structure
+### RAG Deep Dives
+- **RAG_IMPLEMENTATION_EXPLAINED.md**: Complete RAG walkthrough
+- **COHERE_SETUP.md**: Getting Cohere API key
 
-```
-langchain-course/
-├── main.py                          # RAG query system
-├── ingestion.py                     # Document processing
-├── callbacks.py                     # LLM callback handlers
-├── mediumblog1.txt                  # Sample document
-├── pyproject.toml                   # Dependencies (uv)
-├── .env                             # API keys (not committed)
-└── docs/
-    ├── RAG_IMPLEMENTATION_EXPLAINED.md
-    ├── FUNCTION_CALLING_EXPLAINED.md
-    └── ...
-```
+### Agent Deep Dives
+- **FUNCTION_CALLING_EXPLAINED.md**: What is function calling?
+- **FUNCTION_CALLING_VS_REACT.md**: Function calling vs ReAct
+- **CREATE_TOOL_CALLING_AGENT_EXPLAINED.md**: Agent creation
+- **AGENT_EXECUTOR_EXPLAINED.md**: AgentExecutor features
+- **COMPARISON.md**: Manual vs automated agents
 
-## 🎓 What You'll Learn
+### Guides
+- **GITHUB_UPLOAD_GUIDE.md**: How to push to GitHub
 
-1. **RAG Fundamentals**
-   - Document chunking strategies
-   - Vector embeddings
-   - Semantic search
-   - Retrieval-augmented generation
+## 🎓 Learning Path
 
-2. **AI Agents**
-   - ReAct pattern (Reason-Act-Observe)
-   - Function calling
-   - Tool binding
-   - Manual vs automated loops
+**Recommended order**:
 
-3. **Production Patterns**
-   - LangChain chains
-   - AgentExecutor
-   - Error handling
-   - Prompt engineering
+1. **Start with RAG** (`01-rag-basics/`)
+   - Understand embeddings and vector search
+   - See how retrieval works
+   - Build your first RAG system
+
+2. **Then Agents** (`02-agents-and-tools/`)
+   - Learn the ReAct pattern
+   - Understand function calling
+   - Compare manual vs automated approaches
+
+3. **Read Documentation** (`docs/`)
+   - Deep dive into concepts
+   - Understand trade-offs
+   - Learn best practices
+
+4. **Experiment**
+   - Modify chunk sizes
+   - Add new tools
+   - Try different models
+   - Build your own projects
 
 ## 🔧 Customization
 
-### Change the Query
-Edit `main.py`:
-```python
-query = "Your question here"
-```
-
-### Adjust Retrieval
-```python
-# Get more chunks
-vectorstore.as_retriever(search_kwargs={"k": 10})
-
-# Filter by metadata
-vectorstore.as_retriever(
-    search_kwargs={"filter": {"source": "specific_file.txt"}}
-)
-```
-
 ### Use Different Models
+
+**LLM**:
 ```python
-# Different Gemini model
+# Gemini Pro (more capable)
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 
-# Different embedding model
+# Claude
+llm = ChatAnthropic(model="claude-3-sonnet")
+```
+
+**Embeddings**:
+```python
+# OpenAI
+embeddings = OpenAIEmbeddings()
+
+# Multilingual Cohere
 embeddings = CohereEmbeddings(model="embed-multilingual-v3.0")
 ```
 
-## 🐛 Troubleshooting
+### Add Your Own Documents
 
-### API Quota Exceeded
-- **Gemini**: Wait for daily quota reset
-- **Cohere**: Free tier: 100 calls/min
-- **Pinecone**: Free tier: 1 index, 100K vectors
-
-### Dimension Mismatch
-Ensure embedding model dimensions match Pinecone index:
-- Cohere `embed-english-v3.0`: 1024 dimensions
-- Pinecone index must also be 1024 dimensions
-
-### NumPy Errors
-```bash
-pip install numpy --upgrade
+Replace `mediumblog1.txt` with your own:
+```python
+loader = TextLoader("your_document.txt")
+# Or use other loaders:
+# PDFLoader, CSVLoader, WebBaseLoader, etc.
 ```
 
-## 📊 Performance
+## 📊 What You'll Build
 
-- **Ingestion**: ~10-15 seconds for 20 chunks
-- **Query**: ~2-3 seconds (embedding + search + generation)
-- **Accuracy**: Depends on document quality and chunk size
+By completing all modules, you'll have:
+- ✅ Working RAG system
+- ✅ Custom AI agents
+- ✅ Understanding of LangChain patterns
+- ✅ Production-ready code examples
+- ✅ Comprehensive documentation
+
+## 🐛 Troubleshooting
+
+### API Quota Issues
+- Gemini: Free tier resets daily
+- Cohere: 100 calls/min free
+- Pinecone: 1 index free
+
+### Dimension Mismatch
+Ensure embeddings match Pinecone index:
+- Cohere `embed-english-v3.0`: 1024 dimensions
+- Set Pinecone index to 1024 dimensions
+
+### Import Errors
+```bash
+# Reinstall dependencies
+uv sync
+
+# Or
+pip install -r requirements.txt
+```
 
 ## 🤝 Contributing
 
 Feel free to:
-- Add more tools to the agent
-- Improve chunking strategies
-- Add conversation memory
-- Implement re-ranking
+- Add new modules
+- Improve documentation
+- Fix bugs
+- Share your learnings
 
 ## 📄 License
 
@@ -201,11 +230,13 @@ MIT
 
 ## 🙏 Acknowledgments
 
-- LangChain for the framework
+- LangChain team for the amazing framework
 - Google for Gemini
 - Cohere for embeddings
 - Pinecone for vector database
 
 ---
 
-**Built with ❤️ as part of a LangChain learning journey**
+**Happy Learning! 🚀**
+
+*This is a living repository - new modules and improvements added regularly*
