@@ -18,6 +18,14 @@ langchain-course/
 │   ├── demo_tool_description.py
 │   └── README.md
 │
+├── 03-documentation-helper/    # Advanced RAG with web crawling
+│   ├── app.py                  # Streamlit web interface
+│   ├── crawler.py              # Tavily web scraping
+│   ├── ingestion.py            # Enhanced document processing
+│   ├── memory.py               # Conversational memory
+│   ├── main.py                 # CLI query engine
+│   └── README.md
+│
 ├── docs/                       # Comprehensive documentation
 │   ├── RAG_IMPLEMENTATION_EXPLAINED.md
 │   ├── FUNCTION_CALLING_EXPLAINED.md
@@ -26,6 +34,7 @@ langchain-course/
 │   ├── AGENT_EXECUTOR_EXPLAINED.md
 │   ├── COMPARISON.md
 │   ├── COHERE_SETUP.md
+│   ├── DOCUMENTATION_HELPER_EXPLAINED.md
 │   └── GITHUB_UPLOAD_GUIDE.md
 │
 ├── .env                        # API keys (not committed)
@@ -59,8 +68,19 @@ Build AI agents using the ReAct pattern:
 **Time**: ~1-2 hours  
 **Difficulty**: Intermediate
 
+### [03 - Documentation Helper](./03-documentation-helper/)
+Advanced RAG system with web crawling and memory:
+- ✅ Web crawling with Tavily
+- ✅ Conversational memory
+- ✅ Streamlit chat interface
+- ✅ Source attribution
+- ✅ Recursive text splitting
+- ✅ Coreference resolution
+
+**Time**: ~2-3 hours  
+**Difficulty**: Intermediate-Advanced
+
 ### Coming Soon...
-- 03 - Conversation Memory
 - 04 - Advanced RAG (Re-ranking, Hybrid Search)
 - 05 - LangGraph Workflows
 - 06 - Production Deployment
@@ -83,12 +103,14 @@ GOOGLE_API_KEY=your_gemini_key
 COHERE_API_KEY=your_cohere_key
 PINECONE_API_KEY=your_pinecone_key
 INDEX_NAME=your_index_name
+TAVILY_API_KEY=your_tavily_key  # For Module 03
 ```
 
 ### 3. Get Free API Keys
 - **Gemini**: https://makersuite.google.com/app/apikey
 - **Cohere**: https://dashboard.cohere.com/
 - **Pinecone**: https://www.pinecone.io/
+- **Tavily**: https://tavily.com/ (for Module 03)
 
 ### 4. Start Learning!
 ```bash
@@ -100,6 +122,11 @@ python main.py       # Query the system
 # Module 2: Agents
 cd ../02-agents-and-tools
 python demo_tool_description.py
+
+# Module 3: Documentation Helper
+cd ../03-documentation-helper
+python ingestion.py      # Crawl and ingest docs
+streamlit run app.py     # Launch web interface
 ```
 
 ## 🏗️ Tech Stack
@@ -118,6 +145,7 @@ All detailed explanations are in the `/docs` folder:
 
 ### RAG Deep Dives
 - **RAG_IMPLEMENTATION_EXPLAINED.md**: Complete RAG walkthrough
+- **DOCUMENTATION_HELPER_EXPLAINED.md**: Advanced RAG with web crawling
 - **COHERE_SETUP.md**: Getting Cohere API key
 
 ### Agent Deep Dives
