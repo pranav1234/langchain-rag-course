@@ -26,8 +26,28 @@ langchain-course/
 │   ├── main.py                 # CLI query engine
 │   └── README.md
 │
+├── 04-reflection-agent/        # LangGraph self-improving agent
+│   ├── state.py                # State definition
+│   ├── chains.py               # Generation & reflection prompts
+│   ├── graph.py                # LangGraph workflow
+│   ├── main.py                 # Interactive CLI
+│   ├── examples.py             # Demo use cases
+│   └── README.md
+│
+├── 05-reflexion-agent/         # Advanced learning agent
+│   ├── state.py                # State with episodic memory
+│   ├── memory.py               # Memory manager
+│   ├── validators.py           # External validation
+│   ├── chains.py               # Generation with memory
+│   ├── graph.py                # Learning workflow
+│   ├── main.py                 # Multi-task CLI
+│   ├── examples.py             # Cross-task learning demos
+│   └── README.md
+│
 ├── docs/                       # Comprehensive documentation
 │   ├── RAG_IMPLEMENTATION_EXPLAINED.md
+│   ├── DOCUMENTATION_HELPER_EXPLAINED.md
+│   └── REFLECTION_PATTERN_EXPLAINED.md
 │   ├── FUNCTION_CALLING_EXPLAINED.md
 │   ├── FUNCTION_CALLING_VS_REACT.md
 │   ├── CREATE_TOOL_CALLING_AGENT_EXPLAINED.md
@@ -80,10 +100,33 @@ Advanced RAG system with web crawling and memory:
 **Time**: ~2-3 hours  
 **Difficulty**: Intermediate-Advanced
 
+### [04 - Reflection Agent](./04-reflection-agent/)
+Learn LangGraph through a self-improving content generator:
+- ✅ LangGraph state management
+- ✅ Iterative loops and cycles
+- ✅ Conditional branching
+- ✅ Generate-reflect-refine pattern
+- ✅ Quality improvement through feedback
+
+**Time**: ~2-3 hours  
+**Difficulty**: Intermediate-Advanced
+
+### [05 - Reflexion Agent](./05-reflexion-agent/)
+Advanced LangGraph agent with episodic memory and learning:
+- ✅ Episodic memory management
+- ✅ External validation with tests
+- ✅ Cross-task learning
+- ✅ Memory persistence
+- ✅ Success pattern recognition
+- ✅ Learning from failures
+
+**Time**: ~3-4 hours  
+**Difficulty**: Advanced
+
 ### Coming Soon...
-- 04 - Advanced RAG (Re-ranking, Hybrid Search)
-- 05 - LangGraph Workflows
-- 06 - Production Deployment
+- 06 - Multi-Agent Systems
+- 07 - Advanced RAG (Re-ranking, Hybrid Search)
+- 08 - Production Deployment
 
 ## � Quick Start
 
@@ -127,6 +170,16 @@ python demo_tool_description.py
 cd ../03-documentation-helper
 python ingestion.py      # Crawl and ingest docs
 streamlit run app.py     # Launch web interface
+
+# Module 4: Reflection Agent
+cd ../04-reflection-agent
+python main.py           # Interactive CLI
+python examples.py       # Run demo use cases
+
+# Module 5: Reflexion Agent
+cd ../05-reflexion-agent
+python main.py           # Multi-task learning CLI
+python examples.py       # Cross-task learning demo
 ```
 
 ## 🏗️ Tech Stack

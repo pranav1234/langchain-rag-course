@@ -1,12 +1,13 @@
 """
-Conversational Memory System
+Conversation Memory Management
 
-This module implements conversation memory with context management
-for multi-turn conversations in the documentation helper.
+This module handles conversation history and context for the
+documentation helper, enabling multi-turn conversations with
+coreference resolution.
 """
 
 from typing import List, Dict, Any
-from langchain.memory import ConversationBufferMemory
+from langchain_core.chat_history import BaseChatMessageHistory, InMemoryChatMessageHistory
 from langchain_core.messages import HumanMessage, AIMessage
 
 
@@ -21,19 +22,15 @@ class ConversationMemoryManager:
             max_history: Maximum number of conversation turns to keep
         """
         self.max_history = max_history
-        self.memory = ConversationBufferMemory(
-            memory_key="chat_history",
-            return_messages=True,
-            output_key="answer"  # For retrieval chains
-        )
+        self.chat_memory = InMemoryChatMessageHistory()
     
     def add_user_message(self, message: str):
         """Add a user message to the conversation history."""
-        self.memory.chat_memory.add_user_message(message)
+        self.chat_memory.add_user_message(message)
     
     def add_ai_message(self, message: str):
         """Add an AI response to the conversation history."""
-        self.memory.chat_memory.add_ai_message(message)
+        self.chat_memory.add_ai_message(message)
     
     def get_chat_history(self) -> List[Dict[str, str]]:
         """
@@ -42,7 +39,7 @@ class ConversationMemoryManager:
         Returns:
             List of message dictionaries with 'role' and 'content'
         """
-        messages = self.memory.chat_memory.messages
+        messages = self.chat_memory.messages
         
         # Limit to max_history most recent messages
         if len(messages) > self.max_history * 2:  # *2 because user+ai = 2 messages
@@ -84,11 +81,11 @@ class ConversationMemoryManager:
     
     def clear(self):
         """Clear all conversation history."""
-        self.memory.clear()
+        self.chat_memory.clear()
     
     def get_memory_variables(self) -> Dict[str, Any]:
         """Get memory variables for chain integration."""
-        return self.memory.load_memory_variables({})
+        return {"chat_history": self.chat_memory.messages}
 
 
 def create_memory_aware_prompt(base_prompt: str, include_history: bool = True) -> str:

@@ -1,0 +1,78 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${fileDirname}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 03: Crawler Demo",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/03-documentation-helper/crawler.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/03-documentation-helper",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 03: Ingestion",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/03-documentation-helper/ingestion.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/03-documentation-helper",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 03: CLI Query",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/03-documentation-helper/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/03-documentation-helper",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 03: Memory Demo",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/03-documentation-helper/memory.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/03-documentation-helper",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 01: RAG Ingestion",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/01-rag-basics/ingestion.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/01-rag-basics",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Module 01: RAG Query",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/01-rag-basics/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/01-rag-basics",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
